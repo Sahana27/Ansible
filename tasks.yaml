@@ -1,0 +1,11 @@
+---
+ - name: "My First Pay"
+   hosts: localhost
+   tasks:
+     - name: "Check host is reachable"
+       ping:
+     - name: "Read content of files"
+       ansible.builtin.debug: var=item
+       with_file:
+         - "/root/test/file1"
+         - "/root/test/file2"
