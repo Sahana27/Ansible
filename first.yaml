@@ -1,0 +1,10 @@
+---
+ - name: "My first play"
+   hosts: localhost
+   tasks:
+     - name: "test reachability"
+       ping:
+     - name: "install kpartx"
+       yum:
+         name: kpartx
+         state: present
