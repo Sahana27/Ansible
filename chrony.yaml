@@ -1,0 +1,15 @@
+---
+ - hosts: localhost
+   become: yes
+   name: "NTP Configuration"
+   tasks:
+     - name: "Ensure chrony is installed"
+       ansible.builtin.dnf:
+         name: chrony
+         state: present
+
+     - name: "Ensure NTP is started now and at boot"
+       service:
+         name: chronyd
+         state: started
+         enabled: yes
