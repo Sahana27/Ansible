@@ -1,0 +1,24 @@
+---
+  - name: "React with Change Example"
+    hosts: logicservers
+    strategy: free
+
+    tasks:
+    - name: "Install ngnix"
+      debug:
+        msg: "Install ngnix on {{  inventory_hostname }}"
+    - name: "Upgrade ngnix"
+      debug:
+        msg: "Upgrade ngnix on  {{ inventory_hostname }}"
+    - name: "Configure ngnix"
+      debug:
+        msg: "Configure ngnix on {{ inventory_hostname }}"
+      notify: restart ngnix
+      changed_when: True
+    - name: "Verify ngnix"
+      debug:
+        msg: "Verify: {{ inventory_hostname }}"
+    handlers:
+      - name: restart ngnix
+        debug:
+          msg: "Called handler for restart"
